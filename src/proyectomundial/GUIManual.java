@@ -54,6 +54,9 @@ public class GUIManual extends JFrame {
     
     private JPanel jPanelMenuDashboardRes;
     private JLabel btnDashboardRes;
+    
+    private JPanel jPanelMenuInisesion;
+    private JLabel btnIniciarSesion;
         
     // Elementos de panel de contenido
     private JPanel jPanelRight;
@@ -69,7 +72,7 @@ public class GUIManual extends JFrame {
     public GUIManual() {
         
         // Cuando inicia el programa no hay sesion avctiva
-        haySesion = false;   
+        haySesion = true;   
         
         // Lista de usuarios habilitados para iniciar sesión en el sistema
         usuarios = new String[5][2];
@@ -126,6 +129,9 @@ public class GUIManual extends JFrame {
         jPanelMenuDashboardRes = new JPanel();
         btnDashboardRes = new JLabel();
         
+        jPanelMenuInisesion = new JPanel();
+        btnIniciarSesion = new JLabel();
+        
         // Pinta el logo de la aplicación
         pintarLogo();
         
@@ -147,6 +153,8 @@ public class GUIManual extends JFrame {
         // Pinta y ajuste diseño del contenedor del panel izquierdo
         pintarPanelIzquierdo();
         
+        // pinta el menu iniciar secion
+        pintarMenuInisesion();
         
         
         // Inicializa los componentes del panel derecho de los contenidos
@@ -334,7 +342,7 @@ public class GUIManual extends JFrame {
             return;
         }
         
-        jLabelTop.setText("Resultados");
+        jLabelTop.setText("Resultado");
 
         // Si no hay resultados cargados, muestra el botón de carga de resultados
         if (resultados == null) {
@@ -449,6 +457,36 @@ public class GUIManual extends JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 System.out.println("Dashboard Resultados");
                 accionDashboardRes();
+            }
+        });
+    }
+    /* private JPanel jPanelMenuDashboardRes;
+    private JLabel btnDashboardRes;
+    
+    private JPanel jPanelMenuInisesion;
+    private JLabel btnIniciarSesion*/
+    
+    private void pintarMenuInisesion() {
+        btnIniciarSesion.setIcon(new ImageIcon(getClass().getResource("/resources/icons/dashboard_resultados.png")));
+        btnIniciarSesion.setText("INICIAR SESION");
+        btnIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
+        
+        JLabel vacioIniciarsesion = new JLabel();
+        jPanelMenuInisesion.setBackground(new java.awt.Color(17, 41, 63));
+        jPanelMenuInisesion.setPreferredSize((new java.awt.Dimension(220, 35)));
+        jPanelMenuInisesion.setLayout(new BorderLayout(15, 0));
+        jPanelMenuInisesion.add(vacioIniciarsesion, BorderLayout.WEST);
+        jPanelMenuInisesion.add(btnIniciarSesion, BorderLayout.CENTER);
+        jPanelMenu.add(jPanelMenuInisesion);
+        
+        btnIniciarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                System.out.println("Iniciar Sesion");
+               accionIniciSesion();
+            }
+
+            private void accionIniciSesion() {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
             }
         });
     }
